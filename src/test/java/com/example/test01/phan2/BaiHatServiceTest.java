@@ -33,9 +33,8 @@ class BaiHatServiceTest {
 
     @Test
     public void testAddBienDuoi_HopLe(){
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            baiHatService.addBaiHat(new BaiHat("1", "Ten", "Ca si", 2.0f, "the loai"));
-        });
+        baiHatService.addBaiHat(
+                new BaiHat("1", "Ten", "Ca si", 4.5f, "the loai"));
         assertEquals(1,baiHatService.getAllBaiHatList().size());
     }
 
@@ -49,9 +48,7 @@ class BaiHatServiceTest {
 
     @Test
     public void testAddBienTren_HopLe(){
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            baiHatService.addBaiHat(new BaiHat("1", "Ten", "Ca si", 5.9f, "the loai"));
-        });
+        baiHatService.addBaiHat(new BaiHat("1", "Ten", "Ca si", 5.58f, "the loai"));
         assertEquals(1,baiHatService.getAllBaiHatList().size());
     }
 
@@ -60,7 +57,7 @@ class BaiHatServiceTest {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
             baiHatService.addBaiHat(new BaiHat("1", "Ten", "Ca si", 6f, "the loai"));
         });
-        assertEquals(1,baiHatService.getAllBaiHatList().size());
+        assertEquals("Bai hat nam trong khoang 2s - 5s59",exception.getMessage());
     }
 
     @AfterEach
